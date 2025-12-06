@@ -511,41 +511,31 @@
             color: var(--netflix-light-gray);
             line-height: 1.5;
             margin-bottom: 15px;
-            /* Truncated by default */
-            display: -webkit-box;
-            -webkit-line-clamp: 3;
-            -webkit-box-orient: vertical;
+            max-height: 80px;
             overflow: hidden;
-            transition: all 0.3s ease;
+            transition: max-height 0.3s ease;
         }
 
         .card.expanded .card-description {
-            -webkit-line-clamp: unset;
-            overflow: visible;
+            max-height: 1000px;
         }
 
-        .card-expand-hint {
-            font-size: 0.8rem;
+        .card-expand-btn {
+            background: none;
+            border: none;
             color: var(--netflix-red);
-            margin-top: 8px;
             cursor: pointer;
-            transition: color 0.3s ease;
+            font-size: 0.85rem;
+            padding: 5px 0;
+            margin-bottom: 10px;
         }
 
-        .card-expand-hint:hover {
-            color: var(--demon-slayer-teal);
+        .card-expand-btn:hover {
+            text-decoration: underline;
         }
 
-        .card.expanded .card-expand-hint .expand-text {
-            display: none;
-        }
-
-        .card .card-expand-hint .collapse-text {
-            display: none;
-        }
-
-        .card.expanded .card-expand-hint .collapse-text {
-            display: inline;
+        .card.expanded {
+            z-index: 100;
         }
 
         .card-tags {
@@ -1210,23 +1200,12 @@
             }
         });
 
-        // Card click to expand functionality
+        // Card click to expand/collapse
         document.addEventListener('DOMContentLoaded', () => {
             const cards = document.querySelectorAll('.card');
-
             cards.forEach(card => {
-                // Add expand hint to each card
-                const description = card.querySelector('.card-description');
-                if (description) {
-                    const hint = document.createElement('div');
-                    hint.className = 'card-expand-hint';
-                    hint.innerHTML = '<span class="expand-text">▼ Read more</span><span class="collapse-text">▲ Read less</span>';
-                    description.parentNode.insertBefore(hint, description.nextSibling);
-                }
-
-                // Toggle expand on click
                 card.addEventListener('click', (e) => {
-                    // Don't toggle if clicking a link
+                    // Don't toggle if clicking a link inside the card
                     if (e.target.tagName === 'A') return;
 
                     // Close other expanded cards
@@ -1238,8 +1217,14 @@
                     card.classList.toggle('expanded');
                 });
             });
-        });
 
+            // Close expanded card when clicking outside
+            document.addEventListener('click', (e) => {
+                if (!e.target.closest('.card')) {
+                    cards.forEach(c => c.classList.remove('expanded'));
+                }
+            });
+        });
     </script>
 </body>
 
