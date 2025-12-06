@@ -511,31 +511,6 @@
             color: var(--netflix-light-gray);
             line-height: 1.5;
             margin-bottom: 15px;
-            max-height: 80px;
-            overflow: hidden;
-            transition: max-height 0.3s ease;
-        }
-
-        .card.expanded .card-description {
-            max-height: 1000px;
-        }
-
-        .card-expand-btn {
-            background: none;
-            border: none;
-            color: var(--netflix-red);
-            cursor: pointer;
-            font-size: 0.85rem;
-            padding: 5px 0;
-            margin-bottom: 10px;
-        }
-
-        .card-expand-btn:hover {
-            text-decoration: underline;
-        }
-
-        .card.expanded {
-            z-index: 100;
         }
 
         .card-tags {
@@ -853,10 +828,9 @@
         <div class="easter-egg" style="margin: 0 50px 40px;">
             <h2>🎶 UP UP UP 🎶 It's Your Moment!</h2>
             <p>
-                <span style="font-style: italic; opacity: 0.9;">"Has a favorite Kpop Demon Hunter character
-                    (preferred)"</span><br><br>
-                <strong>My response:</strong> Yes, I saw the LinkedIn post. Yes, I made this entire portfolio because of
-                it. And yes, Tanjiro is my pick - that persistence hits different when you're applying to jobs. 🎬
+                Yes, I saw the LinkedIn post. Yes, I made this entire portfolio because of it. And yes, I do have a
+                favorite Kpop Demon Hunter character - Tanjiro. That persistence hits different when you're applying to
+                jobs. 🎬
             </p>
             <p style="margin-top: 15px;">
                 <a href="https://www.linkedin.com/feed/update/urn:li:share:7402826975545061378" target="_blank"
@@ -1203,32 +1177,6 @@
             } else if (navbar) {
                 navbar.classList.remove('scrolled');
             }
-        });
-
-        // Card click to expand/collapse
-        document.addEventListener('DOMContentLoaded', () => {
-            const cards = document.querySelectorAll('.card');
-            cards.forEach(card => {
-                card.addEventListener('click', (e) => {
-                    // Don't toggle if clicking a link inside the card
-                    if (e.target.tagName === 'A') return;
-
-                    // Close other expanded cards
-                    cards.forEach(c => {
-                        if (c !== card) c.classList.remove('expanded');
-                    });
-
-                    // Toggle this card
-                    card.classList.toggle('expanded');
-                });
-            });
-
-            // Close expanded card when clicking outside
-            document.addEventListener('click', (e) => {
-                if (!e.target.closest('.card')) {
-                    cards.forEach(c => c.classList.remove('expanded'));
-                }
-            });
         });
     </script>
 </body>
