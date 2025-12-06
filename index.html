@@ -394,9 +394,13 @@
             padding: 50px 50px 80px;
             background-color: #000000;
             width: 100%;
+            max-width: 100%;
         }
 
-        section>* {
+        section .content-row,
+        section .section-header,
+        section .skills-container,
+        section .contact-grid {
             max-width: 1600px;
             margin-left: auto;
             margin-right: auto;
@@ -455,8 +459,8 @@
         }
 
         .card:hover {
-            transform: scale(1.05);
-            z-index: 10;
+            transform: scale(1.02);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
         }
 
         .card-image {
