@@ -843,9 +843,13 @@
                             </div>
                             <p class="card-meta">Jun 2025 – Aug 2025 • Dallas, USA</p>
                             <p class="card-description">
-                                • Built multi-stage LLM orchestration system for 30K+ engineers (Nokia + Apple,
-                                Qualcomm), achieving 94% reduction in manual effort<br>
-                                • Built automated evaluation framework using LLM-as-judge, reducing manual review by 70%
+                                • Built a multi-stage LLM orchestration system with iterative context retrieval and
+                                specialized generation steps for technical document creation, assisting 30K+ engineers
+                                across Nokia and enterprise partners (Apple, Qualcomm), achieving 94% reduction in
+                                manual effort (from two weeks to under 5 hours per document)<br><br>
+                                • Built an automated evaluation framework using LLM-as-judge and golden dataset
+                                benchmarking to validate generated technical documentation quality, reducing manual
+                                review effort by 70% while maintaining accuracy standards
                             </p>
                             <div class="card-tags">
                                 <span class="tag">LLM Orchestration</span>
@@ -870,11 +874,24 @@
                             </div>
                             <p class="card-meta">Jun 2021 – Aug 2024 • Mumbai, India</p>
                             <p class="card-description">
-                                • Built LLM agent system for 16 internal services, eliminating 90% of manual steps<br>
-                                • Engineered cross-modal search (CLIP/Whisper) for 50K+ assets, serving 50K daily
-                                requests<br>
-                                • Built RAG pipeline with hybrid search, improving retrieval accuracy by 35%<br>
-                                • Fine-tuned Llama-3 8B with QLoRA, improving F1 from 73% to 91%
+                                • Built an LLM agent system for task execution across 16 internal services, implementing
+                                intent classification, parameter extraction, sequential reasoning, and automated API
+                                execution to enable natural language task completion, eliminating 90% of manual
+                                steps<br><br>
+                                • Engineered a cross-modal search system using CLIP and Whisper to enable text-based
+                                queries across 50K+ multimedia assets, improving search relevance by 70% (NDCG) over
+                                keyword-based baseline<br><br>
+                                • Designed and built a scalable RAG pipeline integrating hybrid search (dense + sparse
+                                retrieval) with a reranker model for context window optimization across 100K+ documents,
+                                improving retrieval accuracy by 35%<br><br>
+                                • Fine-tuned Llama-3 8B using QLoRA on 12K customer support transcripts, improving
+                                intent classification F1 score from 73% to 91%<br><br>
+                                • Engineered a model deployment pipeline using vLLM to host multiple base and custom
+                                fine-tuned models, serving 50K+ daily requests with OpenAI-compatible REST
+                                endpoints<br><br>
+                                • Designed and implemented an automated LLM evaluation pipeline to compare model
+                                performance and validate version updates, supporting deployment decisions across 10+
+                                production services
                             </p>
                             <div class="card-tags">
                                 <span class="tag">LLM Agents</span>
@@ -927,8 +944,10 @@
                             <p class="card-subtitle">Open Source Contributor</p>
                             <p class="card-meta">Repo: 65k+ ⭐ on GitHub</p>
                             <p class="card-description">
-                                • Developed custom code parsers that structure source code into LLM-consumable formats,
-                                enabling semantic code search and context-aware developer tooling
+                                • Enhanced LangChain, an open-source framework for LLM-powered application development,
+                                by developing custom code parsers that structure source code into LLM-consumable
+                                formats, enabling developers to build downstream applications such as code analysis,
+                                context-aware developer tooling, semantic code search, etc.
                             </p>
                             <div class="card-tags">
                                 <span class="tag">Open Source</span>
@@ -948,8 +967,10 @@
                             <p class="card-subtitle">Open Source Contributor</p>
                             <p class="card-meta">Repo: 5.5k+ ⭐ on GitHub</p>
                             <p class="card-description">
-                                • Resolved RuntimeError in NeoX-based models blocking inference, enabling stable
-                                deployment of GPT-NeoX and Pythia models in production
+                                • Contributed to Hugging Face's Text Generation Inference, an LLM deployment and
+                                inference toolkit, by resolving a RuntimeError in NeoX-based models that was blocking
+                                inference, enabling stable deployment of GPT-NeoX and Pythia models in production
+                                environments
                             </p>
                             <div class="card-tags">
                                 <span class="tag">Rust</span>
