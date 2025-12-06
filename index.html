@@ -444,13 +444,15 @@
             border-radius: 8px;
             overflow: hidden;
             transition: all 0.3s ease;
+            cursor: pointer;
             position: relative;
             height: 100%;
         }
 
         .card:hover {
-            transform: scale(1.02);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+            transform: scale(1.05);
+            z-index: 10;
+            box-shadow: 0 10px 30px rgba(229, 9, 20, 0.3);
         }
 
         .card-image {
