@@ -511,6 +511,113 @@
             color: var(--netflix-light-gray);
             line-height: 1.5;
             margin-bottom: 15px;
+            max-height: 80px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .card-description::after {
+            content: '... click for more';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            background: linear-gradient(to right, transparent, var(--netflix-dark-gray) 50%);
+            padding-left: 40px;
+            color: var(--netflix-red);
+            font-size: 0.8rem;
+        }
+
+        /* Modal Styles */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: var(--netflix-dark-gray);
+            border-radius: 12px;
+            max-width: 700px;
+            max-height: 80vh;
+            overflow-y: auto;
+            padding: 30px;
+            position: relative;
+            animation: modalSlide 0.3s ease;
+        }
+
+        @keyframes modalSlide {
+            from {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: none;
+            border: none;
+            color: var(--netflix-white);
+            font-size: 2rem;
+            cursor: pointer;
+            line-height: 1;
+        }
+
+        .modal-close:hover {
+            color: var(--netflix-red);
+        }
+
+        .modal-title {
+            font-size: 1.8rem;
+            color: var(--netflix-white);
+            margin-bottom: 5px;
+        }
+
+        .modal-subtitle {
+            color: var(--netflix-light-gray);
+            margin-bottom: 15px;
+        }
+
+        .modal-meta {
+            color: var(--match-green);
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+        }
+
+        .modal-description {
+            color: var(--netflix-light-gray);
+            line-height: 1.8;
+            font-size: 1rem;
+        }
+
+        .modal-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 20px;
+        }
+
+        .modal-tags .tag {
+            background: rgba(229, 9, 20, 0.2);
+            border: 1px solid var(--netflix-red);
         }
 
         .card-tags {
@@ -832,10 +939,11 @@
                 favorite Kpop Demon Hunter character - Tanjiro. That persistence hits different when you're applying to
                 jobs. 🎬
             </p>
-            <p style="margin-top: 15px;">
-                <a href="https://www.linkedin.com/feed/update/urn:li:share:7402826975545061378" target="_blank"
-                    style="color: #00d4aa; text-decoration: underline;">See the post that started it all →</a>
-            </p>
+            <div style="margin-top: 20px;">
+                <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7402826975545061378" height="400"
+                    width="100%" style="max-width: 504px; border-radius: 8px;" frameborder="0" allowfullscreen=""
+                    title="The LinkedIn post that started it all"></iframe>
+            </div>
         </div>
 
         <!-- Experience Section -->
@@ -845,7 +953,30 @@
                     <h2 class="row-title">Experience & Originals</h2>
                 </div>
                 <div class="cards-slider">
-                    <!-- Nokia -->
+                    <!-- Netflix - Coming Soon (S3 First!) -->
+                    <div class="card" style="opacity: 0.85;">
+                        <div class="card-image" style="background: linear-gradient(135deg, #E50914 0%, #00d4aa 100%);">
+                            <span class="card-match">S3 • Coming 2026</span>
+                        </div>
+                        <div class="card-content">
+                            <div class="card-header">
+                                <div>
+                                    <h3 class="card-title">Netflix: ???</h3>
+                                    <p class="card-subtitle">Software Engineer - New Grad</p>
+                                </div>
+                            </div>
+                            <p class="card-meta">2026</p>
+                            <p class="card-description">
+                                🎬 Season 3 is currently in production. Stay tuned for the next chapter...
+                            </p>
+                            <div class="card-tags">
+                                <span class="tag">🎶 UP UP UP</span>
+                                <span class="tag">Your Move, Netflix</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Nokia (S2) -->
                     <div class="card">
                         <div class="card-image" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
                             <span class="card-match">S2 • 98% Match</span>
@@ -876,7 +1007,7 @@
                         </div>
                     </div>
 
-                    <!-- LTIMindtree -->
+                    <!-- LTIMindtree (S1) -->
                     <div class="card">
                         <div class="card-image" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
                             <span class="card-match">S1 • 97% Match</span>
@@ -915,29 +1046,6 @@
                                 <span class="tag">vLLM</span>
                                 <span class="tag">Fine-tuning</span>
                                 <span class="tag">RAG</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Netflix - Coming Soon -->
-                    <div class="card" style="opacity: 0.85;">
-                        <div class="card-image" style="background: linear-gradient(135deg, #E50914 0%, #00d4aa 100%);">
-                            <span class="card-match">S3 • Coming 2026</span>
-                        </div>
-                        <div class="card-content">
-                            <div class="card-header">
-                                <div>
-                                    <h3 class="card-title">Netflix: ???</h3>
-                                    <p class="card-subtitle">Software Engineer - New Grad</p>
-                                </div>
-                            </div>
-                            <p class="card-meta">2026</p>
-                            <p class="card-description">
-                                🎬 Season 3 is currently in production. Stay tuned for the next chapter...
-                            </p>
-                            <div class="card-tags">
-                                <span class="tag">🎶 UP UP UP</span>
-                                <span class="tag">Your Move, Netflix</span>
                             </div>
                         </div>
                     </div>
@@ -1103,39 +1211,6 @@
             </div>
         </section>
 
-        <!-- Skills Section -->
-        <section id="skills">
-            <div class="section-header">
-                <h2 class="section-title">Technical Arsenal</h2>
-            </div>
-            <div class="skills-container">
-                <div class="skill-item">Python</div>
-                <div class="skill-item">PyTorch</div>
-                <div class="skill-item">LLMs</div>
-                <div class="skill-item">RAG</div>
-                <div class="skill-item">LangChain</div>
-                <div class="skill-item">Docker</div>
-                <div class="skill-item">Kubernetes</div>
-                <div class="skill-item">AWS</div>
-                <div class="skill-item">GCP</div>
-                <div class="skill-item">FastAPI</div>
-                <div class="skill-item">React</div>
-                <div class="skill-item">System Design</div>
-                <div class="skill-item">MLOps</div>
-                <div class="skill-item">SQL</div>
-                <div class="skill-item">Redis</div>
-                <div class="skill-item">ChromaDB</div>
-                <div class="skill-item">LangGraph</div>
-                <div class="skill-item">Azure</div>
-                <div class="skill-item">Transformers</div>
-                <div class="skill-item">vLLM</div>
-                <div class="skill-item">CLIP</div>
-                <div class="skill-item">Whisper</div>
-                <div class="skill-item">LoRA</div>
-                <div class="skill-item">Flask</div>
-            </div>
-        </section>
-
         <!-- Contact Section -->
         <section id="contact">
             <div class="section-header">
@@ -1167,6 +1242,18 @@
         </footer>
     </div>
 
+    <!-- Modal -->
+    <div class="modal-overlay" id="modal">
+        <div class="modal-content">
+            <button class="modal-close" id="modalClose">&times;</button>
+            <h2 class="modal-title" id="modalTitle"></h2>
+            <p class="modal-subtitle" id="modalSubtitle"></p>
+            <p class="modal-meta" id="modalMeta"></p>
+            <div class="modal-description" id="modalDescription"></div>
+            <div class="modal-tags" id="modalTags"></div>
+        </div>
+    </div>
+
     <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
     <script>
         // Navbar scroll effect
@@ -1176,6 +1263,57 @@
                 navbar.classList.add('scrolled');
             } else if (navbar) {
                 navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Modal functionality
+        const modal = document.getElementById('modal');
+        const modalClose = document.getElementById('modalClose');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalSubtitle = document.getElementById('modalSubtitle');
+        const modalMeta = document.getElementById('modalMeta');
+        const modalDescription = document.getElementById('modalDescription');
+        const modalTags = document.getElementById('modalTags');
+
+        // Add click handlers to all cards
+        document.querySelectorAll('.card').forEach(card => {
+            card.addEventListener('click', (e) => {
+                if (e.target.tagName === 'A') return;
+
+                const title = card.querySelector('.card-title')?.textContent || '';
+                const subtitle = card.querySelector('.card-subtitle')?.textContent || '';
+                const meta = card.querySelector('.card-meta')?.textContent || '';
+                const description = card.querySelector('.card-description')?.innerHTML || '';
+                const tags = card.querySelector('.card-tags')?.innerHTML || '';
+
+                modalTitle.textContent = title;
+                modalSubtitle.textContent = subtitle;
+                modalMeta.textContent = meta;
+                modalDescription.innerHTML = description;
+                modalTags.innerHTML = tags;
+
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+        });
+
+        // Close modal
+        modalClose.addEventListener('click', () => {
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && modal.classList.contains('active')) {
+                modal.classList.remove('active');
+                document.body.style.overflow = '';
             }
         });
     </script>
