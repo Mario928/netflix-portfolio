@@ -511,6 +511,41 @@
             color: var(--netflix-light-gray);
             line-height: 1.5;
             margin-bottom: 15px;
+            /* Truncated by default */
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .card.expanded .card-description {
+            -webkit-line-clamp: unset;
+            overflow: visible;
+        }
+
+        .card-expand-hint {
+            font-size: 0.8rem;
+            color: var(--netflix-red);
+            margin-top: 8px;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .card-expand-hint:hover {
+            color: var(--demon-slayer-teal);
+        }
+
+        .card.expanded .card-expand-hint .expand-text {
+            display: none;
+        }
+
+        .card .card-expand-hint .collapse-text {
+            display: none;
+        }
+
+        .card.expanded .card-expand-hint .collapse-text {
+            display: inline;
         }
 
         .card-tags {
@@ -1175,6 +1210,35 @@
             }
         });
 
+        // Card click to expand functionality
+        document.addEventListener('DOMContentLoaded', () => {
+            const cards = document.querySelectorAll('.card');
+
+            cards.forEach(card => {
+                // Add expand hint to each card
+                const description = card.querySelector('.card-description');
+                if (description) {
+                    const hint = document.createElement('div');
+                    hint.className = 'card-expand-hint';
+                    hint.innerHTML = '<span class="expand-text">▼ Read more</span><span class="collapse-text">▲ Read less</span>';
+                    description.parentNode.insertBefore(hint, description.nextSibling);
+                }
+
+                // Toggle expand on click
+                card.addEventListener('click', (e) => {
+                    // Don't toggle if clicking a link
+                    if (e.target.tagName === 'A') return;
+
+                    // Close other expanded cards
+                    cards.forEach(c => {
+                        if (c !== card) c.classList.remove('expanded');
+                    });
+
+                    // Toggle this card
+                    card.classList.toggle('expanded');
+                });
+            });
+        });
 
     </script>
 </body>
